@@ -6,8 +6,7 @@ body, html {
 body {
 	background: #e0e0e0;
 	background-image: -webkit-gradient(radial, 32% center, 0, 32% center, 900, from(#fff), to(#aaa));
-/*	Make Firefox SLOW on img transform
-	background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);*/
+	background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);
 }
 p {
 	margin: 0; padding: 0;
