@@ -94,6 +94,7 @@ h1 a:hover {
 	position: absolute;
 	color: #333;
 	left: 50px;
+	font-weight: bold;
 }
 
 #title {
