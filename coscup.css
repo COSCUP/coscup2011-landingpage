@@ -43,7 +43,6 @@ a:hover {
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
 	-o-transition: all .3s;
-	border: 1 solid #bbb;
 }
 
 #photos img:hover {
@@ -52,7 +51,6 @@ a:hover {
 	-moz-transform: scale(1.8) rotate(10deg);
 	-ms-transform: scale(1.8) rotate(10deg);
 	-o-transform: scale(1.8) rotate(10deg);
-	border: 5px solid #bbb;
 	z-index: 2;
 }
 #info.beforeLoad {
