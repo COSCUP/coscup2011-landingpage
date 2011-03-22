@@ -5,6 +5,7 @@
 
  usage:
   $('#div').imageCloud(settings); // put word cloud on #image.
+  $.imageCloudSupported // return true if supported
  
 */
 
@@ -18,7 +19,10 @@
 		return this;
 	};
 
+	$.imageCloudSupported = !!Array.prototype.some;
+
 	$.fn.imageCloud = function (options) {
+		if (!$.imageCloudSupported) return this;
 	
 		var settings = {
 			gridSize: 8,
