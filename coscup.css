@@ -2,6 +2,7 @@ body, html {
 	margin: 0; padding: 0; height: 100%; width: 100%;
 	background-color: #d0d0d0;
 	overflow: hidden;
+	position: absolute;
 }
 body {
 	background: #e0e0e0;
