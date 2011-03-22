@@ -136,8 +136,8 @@ h1 a:hover {
 	text-indent: -10000px;
 	display: inline-block;
 	vertical-align: top;
-	width: 16px; height: 16px;
-	background: transparent url('https://calendar.google.com/googlecalendar/images/favicon_v2010.ico');
+	width: 24px; height: 24px;
+	background: transparent url('gcal-icon-24px.png') top left no-repeat;
 	-webkit-transform: rotate(-10deg);
 	-moz-transform: rotate(-10deg);
 	-ms-transform: rotate(-10deg);
