@@ -36,7 +36,7 @@
 <script type="text/javascript" src="./jquery.imagecloud.min.js"></script>
 <script type="text/javascript">
 jQuery(function ($) {
-	$('#photos').imageCloud({photos:photos, photoListType: 'native'});
+	$('#photos').imageCloud({gridSize: 4, photos:photos, photoListType: 'native'});
 	setTimeout(
 		function () {
 			$('#info').removeClass('beforeLoad');
@@ -46,7 +46,7 @@ jQuery(function ($) {
 	$('h1 > a').bind(
 		'click',
 		function () {
-			$('#photos').imageCloud({photos:photos, photoListType: 'native'});
+			$('#photos').imageCloud({gridSize: 4, photos:photos, photoListType: 'native'});
 			return false;
 		}
 	);
