@@ -1,0 +1,115 @@
+body, html {
+	margin: 0; padding: 0; height: 100%; width: 100%;
+	background-color: #d0d0d0;
+	overflow: hidden;
+}
+body {
+	background: #e0e0e0;
+	background-image: -webkit-gradient(radial, 32% center, 0, 32% center, 900, from(#fff), to(#aaa));
+/*	Make Firefox SLOW on img transform
+	background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);*/
+}
+p {
+	margin: 0; padding: 0;
+	font-family: "Myriad Pro", "Lucida Grande", Helvetica, Arial,
+	  "Heiti TC", "Hiragino Kaku Gothic Pro", "Hiragino Sans GB", "Lihei Pro", 
+	  "文泉驛微米黑", "Droid Sans Fallback",
+	  "新細明體", sans-serif !important;
+}
+a {
+	color: #333;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+#photos {
+	position: absolute;
+	width: 65%;
+	min-width: 750px;
+	top: -10%; bottom: -10%;
+	left: -10%;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+	-o-transform: rotate(-10deg);
+}
+
+#photos img {
+	position: absolute;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-o-transition: all .3s;
+	border: 1 solid #bbb;
+}
+
+#photos img:hover {
+	opacity: 1!important;
+	-webkit-transform: scale(1.8) rotate(10deg);
+	-moz-transform: scale(1.8) rotate(10deg);
+	-o-transform: scale(1.8) rotate(10deg);
+	border: 5px solid #bbb;
+	z-index: 2;
+}
+#info.beforeLoad {
+	opacity: 0;
+}
+#info {
+	position: absolute;
+	width: 60%; height: 40%;
+	min-width: 640px;
+	min-height: 275px;
+	top: 30%;
+	right: 3%;
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.7);
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	opacity: 1;
+}
+#info:hover {
+	-webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	background-color: rgba(255,255,255,0.9);
+	right: 20%;
+}
+
+h1 {
+	font-size: 60px;
+	font-style: italic;
+	font-family: 'Corben', arial, serif;
+	color: #389f2d;
+	margin: 0; padding: 0;
+	position: absolute;
+	top: 30px; left: 30px;
+	text-shadow: 0 0 10px #fff, 0 0 5px #fff;
+}
+
+#info > p {
+	position: absolute;
+	color: #333;
+	left: 50px;
+}
+
+#title {
+	top: 120px;
+	font-size: 16px;
+}
+
+#date {
+	top: 170px;
+	font-size: 30px;
+}
+
+#seeyou {
+	top: 210px;
+	font-size: 20px;
+}
+
+#archives {
+	position: absolute;
+	bottom: 20px; right: 3%;
+	margin: 0; padding: 0;
+	font-size: 12px;
+}
