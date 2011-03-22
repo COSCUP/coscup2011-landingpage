@@ -12,7 +12,7 @@
 <div id="photos">
 </div>
 <div id="info" class="beforeLoad">
-<h1>Coscup 2011</h1>
+<h1><a href="http://coscup.org/2011/">Coscup 2011</a></h1>
 <p id="title">開源人年會 | Conference for Open Source Coders, Users and Promoters</p>
 <p id="date">August 20th - 21th</p>
 <p id="seeyou">See You Soon.</p>
@@ -34,6 +34,14 @@ jQuery(function ($) {
 			$('#info').removeClass('beforeLoad');
 		},
 		200
+	);
+	$('h1 > a').bind(
+		'click',
+		function () {
+			// photos Array had already converted by the first call.
+			$('#photos').imageCloud({photos:photos, photoListType: 'native'});
+			return false;
+		}
 	);
 });
 

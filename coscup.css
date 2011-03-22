@@ -75,7 +75,7 @@ a:hover {
 	right: 20%;
 }
 
-h1 {
+h1 a {
 	font-size: 60px;
 	font-style: italic;
 	font-family: 'Corben', arial, serif;
@@ -84,6 +84,9 @@ h1 {
 	position: absolute;
 	top: 30px; left: 30px;
 	text-shadow: 0 0 10px #fff, 0 0 5px #fff;
+}
+h1 > a:hover {
+	text-decoration: none;
 }
 
 #info > p {
