@@ -32,7 +32,12 @@
 			photos: false,
 			photoListType: 'flickr',
 			wait: 50,
-			fadeIn: 200,
+			beforeImageLoad: function ($img, r, R) {
+				$img.css('opacity', Math.pow(r/R, 2)).hide();
+			},
+			imageLoad: function ($img, r, R) {
+				$img.fadeIn(200);
+			},
 			weight: function (i, listLength, canvasSize) {
 				var w = 5.5*canvasSize/43200/listLength*Math.pow((listLength - i)/listLength, 2);
 				return (w > 0.1)?w:0;
@@ -116,12 +121,11 @@
 								width: (gw*settings.gridSize).toString(10) + 'px',
 								height: (gh*settings.gridSize).toString(10) + 'px',
 								left: (gxy[0]*settings.gridSize).toString(10) + 'px',
-								top: (gxy[1]*settings.gridSize).toString(10) + 'px',
-								display: 'none',
-								opacity: r*r/R/R
+								top: (gxy[1]*settings.gridSize).toString(10) + 'px'
 							});
+							settings.beforeImageLoad($i, r, R, i);
 							$i[0].onload = function () {
-								$(this).fadeIn(settings.fadeIn);
+								settings.imageLoad($i, r, R, i);
 							};
 							var $a = $('<a href="' + photo.link_url + '" target="_blank" />').append($i);
 							$a.attr('title', photo.title);
