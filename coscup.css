@@ -65,9 +65,9 @@ a:hover {
 	right: 3%;
 	background-color: #fff;
 	background-color: rgba(255,255,255,0.65);
-	-webkit-transition: background-color .3s ease-out;
-	-moz-transition: background-color .3s ease-out;
-	-o-transition: background-color .3s ease-out;
+	-webkit-transition: background-color,opacity .3s ease-out;
+	-moz-transition: background-color,opacity .3s ease-out;
+	-o-transition: background-color,opacity .3s ease-out;
 	opacity: 1;
 }
 
