@@ -93,7 +93,7 @@ a:hover {
 }
 
 h1 a {
-	font-size: 60px;
+	font-size: 50px;
 	font-style: italic;
 	font-family: 'Corben', arial, serif;
 	color: #389f2d;
@@ -112,7 +112,7 @@ h1 a:hover {
 	text-indent: -10000px;
 	display: inline-block; /* inline-block fails on IE? */
 	width: 305px; height: 121px;
-	vertical-align: 36px;
+	vertical-align: 20px;
 }
 
 #info p {
