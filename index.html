@@ -36,17 +36,32 @@
 <script type="text/javascript" src="./jquery.imagecloud.min.js"></script>
 <script type="text/javascript">
 jQuery(function ($) {
-	$('#photos').imageCloud({gridSize: 4, photos:photos, photoListType: 'native'});
+
+	var options = {
+		gridSize: 4,
+		photos:photos,
+		beforeImageLoad: function ($img, r, R) {
+			$img.css('opacity', 0);
+		},
+		imageLoad: function ($img, r, R) {
+			$img.css('opacity', Math.pow(r/R, 2));
+		},
+		photoListType: 'native'
+	};
+
+	$('#photos').imageCloud(options);
+
 	setTimeout(
 		function () {
 			$('#info').removeClass('beforeLoad');
 		},
 		200
 	);
+
 	$('h1 > a').bind(
 		'click',
 		function () {
-			$('#photos').imageCloud({gridSize: 4, photos:photos, photoListType: 'native'});
+			$('#photos').imageCloud(options);
 			return false;
 		}
 	);
