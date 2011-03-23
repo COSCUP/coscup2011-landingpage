@@ -99,11 +99,20 @@ h1 a {
 	color: #389f2d;
 	margin: 0; padding: 0;
 	position: absolute;
-	top: 30px; left: 30px;
+	top: 10px; left: 30px;
+	height: 121px;
 	text-shadow: 0 0 10px #fff, 0 0 5px #fff;
 }
 h1 a:hover {
 	text-decoration: none;
+}
+
+#coscup-word {
+	background: transparent url('coscup.svg') center center no-repeat;
+	text-indent: -10000px;
+	display: inline-block; /* inline-block fails on IE? */
+	width: 305px; height: 121px;
+	vertical-align: 36px;
 }
 
 #info p {
@@ -114,7 +123,7 @@ h1 a:hover {
 }
 
 #title {
-	top: 110px;
+	top: 120px;
 	font-size: 22px;
 }
 
