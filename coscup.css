@@ -64,26 +64,31 @@ a:hover {
 	top: 30%;
 	right: 3%;
 	background-color: #fff;
-	background-color: rgba(255,255,255,0.6);
-	-webkit-transition: all .3s ease-out;
-	-moz-transition: all .3s ease-out;
-	-o-transition: all .3s ease-out;
+	background-color: rgba(255,255,255,0.65);
+	-webkit-transition: background-color .3s ease-out;
+	-moz-transition: background-color .3s ease-out;
+	-o-transition: background-color .3s ease-out;
 	opacity: 1;
 }
 
 #info input {
 	opacity: 0.7;
+	-webkit-transition: opacity .3s ease-out;
+	-moz-transition: opacity .3s ease-out;
+	-o-transition: opacity .3s ease-out;
 }
 
 #info:hover {
-	-webkit-transition: all .3s ease-in;
-	-moz-transition: all .3s ease-in;
-	-o-transition: all .3s ease-in;
+	-webkit-transition: background-color .3s ease-in;
+	-moz-transition: background-color .3s ease-in;
+	-o-transition: background-color .3s ease-in;
 	background-color: rgba(255,255,255,0.9);
-	right: 3.5%;
 }
 
 #info:hover input {
+	-webkit-transition: opacity .3s ease-in;
+	-moz-transition: opacity .3s ease-in;
+	-o-transition: opacity .3s ease-in;
 	opacity: 1;
 }
 
