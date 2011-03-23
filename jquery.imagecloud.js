@@ -33,9 +33,9 @@
 			photoListType: 'flickr',
 			wait: 50,
 			fadeIn: 200,
-			weightFactor: function (n) {
-				n = 1-n;
-				return n*n;
+			weight: function (i, listLength, canvasSize) {
+				var w = 5.5*canvasSize/43200/listLength*Math.pow((listLength - i)/listLength, 2);
+				return (w > 0.1)?w:0;
 			},
 			shuffle: true
 		};
@@ -44,7 +44,7 @@
 			$.extend(settings, options);
 		}
 		
-		var ngx, ngy, grid, f,
+		var ngx, ngy, grid, listLength, canvasSize,
 		getPhotos = {
 			'flickr': function (callback) {
 				$.getJSON(
@@ -90,8 +90,8 @@
 				}
 			}
 		},
-		putPhoto = function ($b, photo, precent) {
-			var factor = settings.weightFactor(precent)*f,
+		putPhoto = function ($b, photo, i) {
+			var factor = settings.weight(i, listLength, canvasSize),
 				gw = Math.ceil(photo.width*factor/settings.gridSize);
 			var gh = Math.ceil(photo.height/photo.width*gw);
 			if (gw === 0 || gh === 0) return false;
@@ -167,7 +167,8 @@
 			ngx = Math.floor(this.offsetWidth/settings.gridSize);
 			ngy = Math.floor(this.offsetHeight/settings.gridSize);
 			grid = [];
-			f = 5*(this.offsetWidth*this.offsetHeight)/(180*240)/150;
+			canvasSize = this.offsetWidth*this.offsetHeight;
+			listLength = settings.photos.length;
 			var $this = $(this);
 			
 			var x = ngx, y;
@@ -189,7 +190,7 @@
 						clearTimeout(timer);
 						return;
 					}
-					putPhoto($this, settings.photos[i], i/settings.photos.length);
+					putPhoto($this, settings.photos[i], i);
 					i++;
 				},
 				settings.wait
