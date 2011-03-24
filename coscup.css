@@ -21,7 +21,11 @@ a {
 	text-decoration: none;
 }
 input {
-	font-size: 20px;
+	vertical-align: center;
+	font-size: 14px;
+}
+input[type="submit"] {
+	-webkit-appearance: button;
 }
 a:hover {
 	text-decoration: underline;
@@ -119,22 +123,23 @@ h1 a:hover {
 	position: absolute;
 	color: #333;
 	left: 35px; right: 35px;
-	font-weight: bold;
 }
 
 #title {
 	top: 120px;
-	font-size: 22px;
+	font-size: 14px;
+	color: #666!important;
 }
 
 #date {
 	top: 170px;
 	font-size: 34px;
+	font-weight: bold;
 }
 
 #subscribe {
 	top: 240px;
-	font-size: 24px;
+	font-size: 18px;
 }
 
 #archives {
@@ -167,4 +172,22 @@ h1 a:hover {
 	-moz-transform: rotate(0deg);
 	-ms-transform: rotate(0deg);
 	-o-transform: rotate(0deg);
+}
+
+.separator {
+	font-size: 120%;
+}
+
+@media screen and (min-width: 1280px) {
+	#title {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	input {
+		font-size: 20px;
+	}
+	#subscribe {
+		font-size: 20px;
+		font-weight: bold;
+	}
 }
