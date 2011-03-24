@@ -80,7 +80,7 @@ jQuery(function ($) {
 	options.photos = [].concat(
 		rex_24.shuffle(),
 		yuren_54.shuffle(),
-		photos.shuffle().slice(0,100 - rex_24.length - yuren_54.length)
+		photos.shuffle()
 	);
 	$('#photos').imageCloud(options);
 
@@ -97,7 +97,7 @@ jQuery(function ($) {
 			options.photos = [].concat(
 				rex_24.shuffle(),
 				yuren_54.shuffle(),
-				photos.shuffle().slice(0,100 - rex_24.length - yuren_54.length)
+				photos.shuffle()
 			);
 			$('#photos').imageCloud(options);
 			return false;
