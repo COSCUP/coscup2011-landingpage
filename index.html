@@ -47,16 +47,24 @@ jQuery(function ($) {
 
 	var options = {
 		gridSize: 4,
-		photos:photos,
 		beforeImageLoad: function ($img, r, R) {
 			$img.css('opacity', 0);
 		},
 		imageLoad: function ($img, r, R) {
 			$img.css('opacity', Math.pow(r/R, 2));
 		},
-		photoListType: 'native'
+		weight: function (i, listLength, canvasSize) {
+			var w = 5.5*canvasSize/43200/150*Math.pow((150 - i)/150, 2);
+			return (w > 0.1)?w:0;
+		},
+		photoListType: 'native',
+		shuffle: false
 	};
-
+	options.photos = [].concat(
+		rex_24.shuffle(),
+		yuren_54.shuffle(),
+		photos.shuffle().slice(0,100 - rex_24.length - yuren_54.length)
+	);
 	$('#photos').imageCloud(options);
 
 	setTimeout(
@@ -69,6 +77,11 @@ jQuery(function ($) {
 	$('h1 > a').bind(
 		'click',
 		function () {
+			options.photos = [].concat(
+				rex_24.shuffle(),
+				yuren_54.shuffle(),
+				photos.shuffle().slice(0,100 - rex_24.length - yuren_54.length)
+			);
 			$('#photos').imageCloud(options);
 			return false;
 		}
@@ -77,6 +90,83 @@ jQuery(function ($) {
 
 }
 
+// Picasaweb photos selected by Rex (TBD)
+var rex_24 = [
+	{
+		width: 288,
+		height: 192,
+		link_url: 'http://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505088778911955762',
+		photo_url: 'http://lh3.ggpht.com/_GwqTLJzZA3g/TGYBE8QJOzI/AAAAAAAAZaI/oOVVWhIQSYc/s288/DSC_2420.JPG'
+	},
+	{
+		width: 288,
+		height: 192,
+		photo_url: 'http://lh4.ggpht.com/_GwqTLJzZA3g/TGZTBczAqEI/AAAAAAAAZ_o/sf45POOImSI/s288/DSC_2521.JPG',
+		link_url: 'http://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178878882129986'
+	}
+];
+
+// http://www.flickr.com/groups/coscup2010-selection/
+// Selected by Yuren Yu
+var yuren_54 = [
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4075/4889441807_3a86c8bf67_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889441807","title":"P8140746"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4140/4901940636_321b5dc4b1_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901940636","title":"DSC_2622"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4134/4893573695_bd7cf4c7b6_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893573695","title":"P8151046"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4074/4901933360_56de47f0a2_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901933360","title":"DSC_2541"},
+	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4077/4912818611_92a804ccb1_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4912818611","title":"COSCUP Day 2"},
+	{"width":"240","height":"120","photo_url":"http://farm5.static.flickr.com/4139/4903649894_ef83276b1e_m.jpg","link_url":"http://www.flickr.com/photos/38664137@N07/4903649894","title":"full2"},
+	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4114/4892533724_255a0db780_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892533724","title":"DSC_8318"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4143/4893498695_6ed348fb05_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893498695","title":"P8151024"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4116/4901453941_9053107317_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901453941","title":"DSC_3313"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4082/4901389753_7a1dc45532_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901389753","title":"DSC_2942"},
+	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4114/4907109051_dbb853678f_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4907109051","title":"COSCUP 2010 Day 1 - Ubuntu BoF"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4073/4892563466_96ec98e91b_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892563466","title":"DSC_8100"},
+	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4140/4907688780_cdd0f13076_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4907688780","title":"COSCUP 2010 Day 1"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4094/4893271331_a53ae76028_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893271331","title":"P8150957"},
+	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4079/4905410356_15f64bf25e_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4905410356","title":"COSCUP 2010 Day 1"},
+	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4100/4890741725_22f7365dd4_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890741725","title":"P8140894"},
+	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4116/4934292898_a1b9a6856f_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4934292898","title":"熱血立夫！啟動！"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4116/4893221101_64a4153f3c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893221101","title":"P8150940"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4119/4901468459_64d2a0084a_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901468459","title":"DSC_3445"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4099/4891967201_a83166e938_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891967201","title":"DSC_8084"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4101/4891959949_d60c5a3742_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891959949","title":"DSC_8145"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4120/4903478347_348668597a_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4903478347","title":"DSC_4046"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4096/4901530949_263e864bb5_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901530949","title":"DSC_3988"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4122/4903778394_71c163b159_m.jpg","link_url":"http://www.flickr.com/photos/38664137@N07/4903778394","title":"DPP_0019"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4138/4903778188_bc23cf45ee_m.jpg","link_url":"http://www.flickr.com/photos/38664137@N07/4903778188","title":"DPP_0016"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4117/4934292964_3bb35f4940_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4934292964","title":"DSC_8611"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4117/4901945960_21f1dd7608_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901945960","title":"DSC_2667"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4097/4902052284_3c5aecf783_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4902052284","title":"DSC_3418"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4079/4890199661_a3590c7937_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890199661","title":"DSCF1148"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4076/4901394251_1dd75e5ccf_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901394251","title":"DSC_2998"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4079/4901363869_a4a5d5d5e9_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901363869","title":"DSC_2699"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4102/4901525359_e9618d4a64_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901525359","title":"DSC_3944"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4101/4901345859_252ba9610c_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901345859","title":"DSC_2540"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4115/4901393899_4dba8919d9_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901393899","title":"DSC_2994"},
+	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4096/4898141929_db97e43b81_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898141929","title":"YRJ_2119.jpg"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4122/4901982114_4dc417f32d_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901982114","title":"DSC_3005"},
+	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4099/4891943527_ac9e1b728c_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891943527","title":"DSC_8259"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4135/4901505453_faa39ab5d7_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901505453","title":"DSC_3775"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4101/4901929900_38815934e8_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901929900","title":"DSC_2490"},
+	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4115/4901305700_d603cf1794_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4901305700","title":"COSCUP 2010 Day 1"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4076/4901391521_2fb178399c_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901391521","title":"DSC_2969"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4134/4903478809_99f3f3fa33_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4903478809","title":"DSC_4057"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4095/4903779614_4905868635_m.jpg","link_url":"http://www.flickr.com/photos/38664137@N07/4903779614","title":"DPP_0038"},
+	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4074/4905410896_58614cbc5d_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4905410896","title":"COSCUP 2010 Day 1"},
+	{"width":"159","height":"240","photo_url":"http://farm5.static.flickr.com/4115/4901472343_bae290f088_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901472343","title":"DSC_3478"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4077/4901955598_49c260dec7_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901955598","title":"DSC_2723"},
+	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4076/4901092374_cde96bbc4b_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4901092374","title":"COSCUP 2010 場佈"},
+	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4075/4891957757_35dec77b02_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891957757","title":"DSC_8161"},
+	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4142/4892564928_d6d8f7ced0_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892564928","title":"DSC_8091"},
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4100/4893745794_cec3cc18b7_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893745794","title":"P8150918"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4138/4902019524_bc29ee82e8_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4902019524","title":"DSC_3178"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4082/4901985134_0ea16d8d78_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4901985134","title":"DSC_3052"},
+	{"width":"159","height":"240","photo_url":"http://farm5.static.flickr.com/4134/4902105502_43cc7405d5_m.jpg","link_url":"http://www.flickr.com/photos/48749766@N00/4902105502","title":"DSC_3888"},
+	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4142/4933698859_b3bf1e05f3_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4933698859","title":"DSC_8365"}
+];
+
+// http://www.flickr.com/groups/coscup2010/
+// top (photos.length) by interestingness sorted by Flickr
 var photos = [
 	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4095/4892560806_e80909b4b2_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892560806","title":"DSC_8124"},
 	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4096/4891960997_87dd8be37e_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891960997","title":"DSC_8137"},
@@ -128,106 +218,7 @@ var photos = [
 	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4075/4891969331_1592f993d6_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891969331","title":"DSC_8064"},
 	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4138/4893214677_bba59df5f7_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893214677","title":"P8150938"},
 	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4078/4897741695_70c4f5f7cb_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4897741695","title":"YRJ_1439.jpg"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4116/4893221101_64a4153f3c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893221101","title":"P8150940"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4136/4898447462_9f3cb33fb3_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898447462","title":"YRJ_1616.jpg"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4093/4891935295_2fc3daffb6_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891935295","title":"DSC_8313"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4120/4892552714_0a54f3fdba_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892552714","title":"DSC_8182"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4114/4912837577_11ed8f4a1c_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4912837577","title":"COSCUP Day 2"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4097/4891939699_3d98ae6862_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891939699","title":"DSC_8281"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4099/4891967201_a83166e938_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891967201","title":"DSC_8084"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4120/4893493797_f67d077545_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893493797","title":"P8151023"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4115/4893002470_d89f110406_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4893002470","title":"DSC_4074"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4118/4898941352_e5a03c99d3_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898941352","title":"YRJ_2497.jpg"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4100/4897892657_8d39a78d76_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4897892657","title":"YRJ_1704.jpg"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4116/4891262566_876edb8be9_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4891262566","title":"P8140872"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4100/4893745794_cec3cc18b7_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893745794","title":"P8150918"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4100/4890741725_22f7365dd4_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890741725","title":"P8140894"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4120/4890804559_446baec7f7_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890804559","title":"P8140909"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4141/4891960839_6bb677da9c_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891960839","title":"DSC_8138"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4136/4893002496_ca0a76d287_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4893002496","title":"DSC_4073"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4137/4891190498_c8a6d82511_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4891190498","title":"P8140853"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4118/4893475267_7d761b7338_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893475267","title":"P8151019"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4136/4893211855_2acb7e250a_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893211855","title":"P8150937"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4100/4890736701_130693e62e_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890736701","title":"P8140893"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4100/4890304680_68689246c8_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890304680","title":"P8140764"},
-	{"width":"240","height":"147","photo_url":"http://farm5.static.flickr.com/4121/4888423754_f4fef40e61_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4888423754","title":"Nokia 紙袋"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4079/4890199661_a3590c7937_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890199661","title":"DSCF1148"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4080/4890797432_7dd384f689_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890797432","title":"很辛苦的線路組"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4115/4898948930_441f0f7c96_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898948930","title":"YRJ_2517.jpg"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4123/4913456946_e91fc68682_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4913456946","title":"COSCUP Day 2"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4122/4894110232_d3417e5201_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4894110232","title":"P8151029"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4096/4897178412_4c77fe51a5_m.jpg","link_url":"http://www.flickr.com/photos/98305710@N00/4897178412","title":"2010COSCUP GNOME.Asia"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4079/4898641338_8f7eab01bb_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898641338","title":"YRJ_2006.jpg"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4135/4890312140_8cb8382f7d_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890312140","title":"P8140774"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4118/4893002562_0fd7770c09_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4893002562","title":"DSC_4067"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4078/4890796428_5b7aae75bf_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890796428","title":"DSCF1063"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4143/4889443021_c78e1521e6_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889443021","title":"P8140749"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4096/4898247327_a1d0e8313f_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898247327","title":"YRJ_2288.jpg"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4143/4888299752_9481ae4cac_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4888299752","title":"DSC_4027"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4137/4890439047_fde5d747bc_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890439047","title":"P8140803"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4094/4893265393_69f89b3ce6_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893265393","title":"P8150955"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4078/4891958237_d4b0fc4697_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891958237","title":"DSC_8159"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4100/4889389549_122306a23a_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889389549","title":"P8140714"},
-	{"width":"191","height":"240","photo_url":"http://farm5.static.flickr.com/4143/4888419424_da63c07c92_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4888419424","title":"場佈小軍"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4120/4889709669_d1a5fc2d8c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889709669","title":"P8140766"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4115/4893479915_1da838d949_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893479915","title":"P8151020"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4115/4898660488_85d826bac1_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898660488","title":"YRJ_2028.jpg"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4093/4892544560_aebe70abd6_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892544560","title":"DSC_8251"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4140/4898531622_d08f332267_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898531622","title":"YRJ_1816.jpg"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4074/4894271108_52cd083f82_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4894271108","title":"GNOME.Asia義賣t-shirt"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4141/4890203701_a851bbd891_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890203701","title":"DSCF1417"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4079/4905410356_15f64bf25e_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4905410356","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4101/4888300208_ff87d410cd_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4888300208","title":"DSC_4036"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4101/4890797704_ee14d5ccc1_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890797704","title":"祭"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4094/4893609071_3826000125_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893609071","title":"P8151058"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4122/4890313514_c6cab5b7fa_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890313514","title":"P8140778"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4079/4897986475_48eb079bb0_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4897986475","title":"YRJ_1928.jpg"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4142/4892564928_d6d8f7ced0_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892564928","title":"DSC_8091"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4114/4891959541_dc11d960c7_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891959541","title":"DSC_8147"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4115/4901305700_d603cf1794_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4901305700","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4095/4891155318_4c08bea3e0_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4891155318","title":"P8140845"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4114/4897707481_01c98ac240_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4897707481","title":"YRJ_1325.jpg"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4138/4894081876_5a2ef5c682_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4894081876","title":"P8151022"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4115/4889705347_20ecc648e9_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889705347","title":"P8140754"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4120/4891970291_d1bd111509_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891970291","title":"DSC_8056"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4094/4893271331_a53ae76028_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893271331","title":"P8150957"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4118/4891947929_3fe361430c_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891947929","title":"DSC_8238"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4101/4893508395_866a5a0be8_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893508395","title":"P8151026"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4074/4893410695_632038d831_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893410695","title":"P8151001"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4101/4888301042_49e5f77beb_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4888301042","title":"DSC_4052"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4143/4893498695_6ed348fb05_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893498695","title":"P8151024"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4123/4891956361_30cd3f9bb4_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891956361","title":"DSC_8169"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4094/4898014545_3466fbf1a7_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898014545","title":"YRJ_1968.jpg"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4097/4890800174_112e3d3e09_m.jpg","link_url":"http://www.flickr.com/photos/19902918@N00/4890800174","title":"DSCF1352"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4143/4893853120_ef35c5f82c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893853120","title":"P8150953"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4136/4898300945_d033199ac8_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898300945","title":"YRJ_2400.jpg"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4076/4901092374_cde96bbc4b_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4901092374","title":"COSCUP 2010 場佈"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4095/4900703373_a67fb0ef70_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4900703373","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4076/4892533484_864a73cff3_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892533484","title":"DSC_8319"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4141/4898393197_5de68deae6_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898393197","title":"YRJ_2561.jpg"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4077/4891957515_5d52057c58_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891957515","title":"DSC_8162"},
-	{"width":"180","height":"240","photo_url":"http://farm5.static.flickr.com/4075/4893821440_16602849b9_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893821440","title":"P8150942"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4075/4893002262_9f24c9e452_m.jpg","link_url":"http://www.flickr.com/photos/26842510@N00/4893002262","title":"DSC_4068"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4121/4891159516_31ae83501c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4891159516","title":"P8140846"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4114/4907109051_dbb853678f_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4907109051","title":"COSCUP 2010 Day 1 - Ubuntu BoF"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4094/4894022448_09f445f7a1_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4894022448","title":"P8151005"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4118/4898714554_8b34849de2_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4898714554","title":"YRJ_2074.jpg"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4134/4891182030_8ca297d418_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4891182030","title":"P8140851"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4075/4891957757_35dec77b02_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891957757","title":"DSC_8161"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4081/4890770243_2dbb6f5fbf_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890770243","title":"P8140902"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4142/4888421734_3235130885_m.jpg","link_url":"http://www.flickr.com/photos/46509322@N00/4888421734","title":"紙袋們"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4137/4904822093_3a8996e29d_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4904822093","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4140/4907094409_73f9f5d843_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4907094409","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4141/4893934344_d88f1662b9_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893934344","title":"P8150981"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4119/4891947075_17bb679a81_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891947075","title":"DSC_8243"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4101/4892535568_4c31c5a289_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892535568","title":"DSC_8309"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4138/4891933947_50bb231aa2_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891933947","title":"DSC_8320"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4100/4890312504_4991812a31_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4890312504","title":"P8140775"},
-	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4080/4889715211_8140d2bc95_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4889715211","title":"P8140773"},
-	{"width":"161","height":"240","photo_url":"http://farm5.static.flickr.com/4101/4900701279_88230e9ed4_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4900701279","title":"COSCUP 2010 Day 1"},
-	{"width":"240","height":"160","photo_url":"http://farm5.static.flickr.com/4101/4891959949_d60c5a3742_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4891959949","title":"DSC_8145"},
-	{"width":"240","height":"161","photo_url":"http://farm5.static.flickr.com/4094/4904822821_33d380137b_m.jpg","link_url":"http://www.flickr.com/photos/54331619@N00/4904822821","title":"COSCUP 2010 Day 1"},
-	{"width":"160","height":"240","photo_url":"http://farm5.static.flickr.com/4135/4892535814_252645bf0c_m.jpg","link_url":"http://www.flickr.com/photos/96595297@N00/4892535814","title":"DSC_8308"}
+	{"width":"240","height":"180","photo_url":"http://farm5.static.flickr.com/4116/4893221101_64a4153f3c_m.jpg","link_url":"http://www.flickr.com/photos/12452841@N00/4893221101","title":"P8150940"}
 ];
 </script>
 </body>
