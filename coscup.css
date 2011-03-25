@@ -1,11 +1,10 @@
 body, html {
 	margin: 0; padding: 0; height: 100%; width: 100%;
-	background-color: #d0d0d0;
+	background-color: #e0e0e0;
 	overflow: hidden;
 	position: absolute;
 }
 body {
-	background: #e0e0e0;
 	background-image: -webkit-gradient(radial, 32% center, 0, 32% center, 900, from(#fff), to(#aaa));
 	background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);
 }
@@ -44,6 +43,7 @@ a:hover {
 
 #photos img {
 	position: absolute;
+	border: none;
 	-webkit-transition: -webkit-transform .3s, opacity .3s;
 	-moz-transition: -moz-transform .3s, opacity .3s;
 	-o-transition: -o-transform .3s, opacity .3s;
@@ -67,11 +67,11 @@ a:hover {
 	min-height: 310px;
 	top: 30%;
 	right: 3%;
-	background-color: #fff;
-	background-color: rgba(255,255,255,0.65);
-	-webkit-transition: background-color,opacity .3s ease-out;
-	-moz-transition: background-color,opacity .3s ease-out;
-	-o-transition: background-color,opacity .3s ease-out;
+	background: #f0f0f0; /* IE7 (must use bg: instead of bg-color: ) */
+	background: rgba(255,255,255,0.65);
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
 	opacity: 1;
 }
 
@@ -83,10 +83,11 @@ a:hover {
 }
 
 #info:hover {
-	-webkit-transition: background-color .3s ease-in;
-	-moz-transition: background-color .3s ease-in;
-	-o-transition: background-color .3s ease-in;
-	background-color: rgba(255,255,255,0.9);
+	-webkit-transition: all .3s ease-in;
+	-moz-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	background: #f8f8f8; /* IE */
+	background: rgba(255,255,255,0.9);
 }
 
 #info:hover input {
