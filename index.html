@@ -71,7 +71,7 @@ jQuery(function ($) {
 			$img.css('opacity', Math.pow(r/R, 2));
 		},
 		weight: function (i, listLength, canvasSize) {
-			var w = 5.5*canvasSize/43200/150*Math.pow((150 - i)/150, 2);
+			var w = 5*canvasSize/43200/150*Math.pow((150 - i)/150, 2);
 			return (w > 0.1)?w:0;
 		},
 		photoListType: 'native',
@@ -109,18 +109,29 @@ jQuery(function ($) {
 
 // Picasaweb photos selected by Rex (TBD)
 var rex_24 = [
-	{
-		width: 288,
-		height: 192,
-		link_url: 'http://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505088778911955762',
-		photo_url: 'http://lh3.ggpht.com/_GwqTLJzZA3g/TGYBE8QJOzI/AAAAAAAAZaI/oOVVWhIQSYc/s288/DSC_2420.JPG'
-	},
-	{
-		width: 288,
-		height: 192,
-		photo_url: 'http://lh4.ggpht.com/_GwqTLJzZA3g/TGZTBczAqEI/AAAAAAAAZ_o/sf45POOImSI/s288/DSC_2521.JPG',
-		link_url: 'http://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178878882129986'
-	}
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_GwqTLJzZA3g/TGYBE8QJOzI/AAAAAAAAZaI/oOVVWhIQSYc/s288/DSC_2420.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505088778911955762","title":"DSC_2420.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh4.googleusercontent.com/_GwqTLJzZA3g/TGZTBczAqEI/AAAAAAAAZ_o/sf45POOImSI/s288/DSC_2521.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178878882129986","title":"DSC_2521.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_GwqTLJzZA3g/TGZTGbN7OrI/AAAAAAAAaBg/csISoVjRAls/s288/DSC_2541.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178964357495474","title":"DSC_2541.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_GwqTLJzZA3g/TGZTGqgR2WI/AAAAAAAAaBo/XM8HW7PJmHI/s288/DSC_2542.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178968461007202","title":"DSC_2542.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh4.googleusercontent.com/_GwqTLJzZA3g/TGZTIcEIPCI/AAAAAAAAaCI/E02kUyD9I6k/s288/DSC_2551.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505178998944578594","title":"DSC_2551.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_GwqTLJzZA3g/TGZTIr1Z8oI/AAAAAAAAaCQ/jVNV3rV0YII/s288/DSC_2552.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505179003177792130","title":"DSC_2552.JPG"},
+	{"width":"192","height":"288","photo_url":"https://lh6.googleusercontent.com/_GwqTLJzZA3g/TGa5DyVATvI/AAAAAAAAazM/o7GgV_f_xrU/s288/DSC_2803.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505291069207629554","title":"DSC_2803.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_GwqTLJzZA3g/TGa5ElBNj1I/AAAAAAAAazc/57KsqM0qGm0/s288/DSC_2805.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505291082814820178","title":"DSC_2805.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_GwqTLJzZA3g/TGa6s7qFJ5I/AAAAAAAAa8U/lG7jedvByds/s288/DSC_2699.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505292875598210962","title":"DSC_2699.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_GwqTLJzZA3g/TGa603LPBzI/AAAAAAAAa-w/qus4PDbTpYQ/s288/DSC_2720.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201002#5505293011834046258","title":"DSC_2720.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_GwqTLJzZA3g/TGge-iLXKwI/AAAAAAAAep8/4b3hKZTixXg/s288/DSC_3999.JPG","link_url":"https://picasaweb.google.com/dslrxx/COSCUPGNOMEAsia201004#5505684604135615234","title":"DSC_3999.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_q7Akm6D67E0/TGqDRXqRTnI/AAAAAAAAGHk/rbj20gkdZ8U/s288/DSC_0794.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506357828846177906","title":"DSC_0794.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_q7Akm6D67E0/TGqGH77nv2I/AAAAAAAAGSo/dkttxth_DiM/s288/DSC_0984.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506360965318819682","title":"DSC_0984.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_q7Akm6D67E0/TGqIby50S2I/AAAAAAAAGbI/VO30-bRPnts/s288/DSC_1121.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506363505515973474","title":"DSC_1121.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_q7Akm6D67E0/TGqEAgdUUpI/AAAAAAAAGNY/8Mfb85A5kus/s288/DSC_0901.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506358638661620370","title":"DSC_0901.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_q7Akm6D67E0/TGqjJLjOPSI/AAAAAAAAGto/svuTNLxbBXM/s288/DSC_0165.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day1#5506392872528526626","title":"DSC_0165.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_q7Akm6D67E0/TGqjJ4pQVLI/AAAAAAAAGtw/06yMxO_iSeY/s288/DSC_0167.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day1#5506392884633425074","title":"DSC_0167.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh5.googleusercontent.com/_q7Akm6D67E0/TGqjXubI3BI/AAAAAAAAGv0/xt0QXE0ory4/s288/DSC_0203.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day1#5506393122408029202","title":"DSC_0203.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_q7Akm6D67E0/TGqjcoJWqnI/AAAAAAAAGwo/p5wuiYIGNMk/s288/DSC_0218.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day1#5506393206622169714","title":"DSC_0218.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_q7Akm6D67E0/TGqC6vBqb-I/AAAAAAAAGCw/wPblSc88siY/s288/DSC_0708.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506357439981318114","title":"DSC_0708.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh3.googleusercontent.com/_q7Akm6D67E0/TGqEC3RdB4I/AAAAAAAAGN8/dgZZ9F5AoW8/s288/DSC_0910.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506358679145613186","title":"DSC_0910.JPG"},
+	{"width":"288","height":"192","photo_url":"https://lh6.googleusercontent.com/_q7Akm6D67E0/TGqGYzHshoI/AAAAAAAAGTk/lsfFt6uqiUg/s288/DSC_0999.JPG","link_url":"https://picasaweb.google.com/quillpapago/COSCUP2010_Day2#5506361255011321474","title":"DSC_0999.JPG"},
+	{"width":"240","height":"159","photo_url":"http://farm5.static.flickr.com/4094/4897053781_709705969c_m.jpg","link_url":"http://www.flickr.com/photos/acelan/4897053781/","title":"DSC_0021 by AceLan Kao, on Flickr"}
 ];
 
 // http://www.flickr.com/groups/coscup2010-selection/
