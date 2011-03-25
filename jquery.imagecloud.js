@@ -13,13 +13,26 @@
 
 (function ($) {
 
+	// short version of ECMAScript 5 Array.prototype.some (w/o thisp and typeError)
+	// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/some
+	if (!Array.prototype.some) {
+		Array.prototype.some = function (fun) {
+			var t = Object(this);
+			var len = t.length >>> 0;
+			for (var i = 0; i < len; i++) {
+				if (i in t && fun.call(null, t[i], i, t)) return true;
+			}
+			return false;
+		};
+	}
+
 	// http://jsfromhell.com/array/shuffle
 	Array.prototype.shuffle = function () { //v1.0
 		for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
 		return this;
 	};
 
-	$.imageCloudSupported = !!Array.prototype.some;
+	$.imageCloudSupported = true;
 
 	$.fn.imageCloud = function (options) {
 		if (!$.imageCloudSupported) return this;
