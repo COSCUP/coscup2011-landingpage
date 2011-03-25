@@ -100,12 +100,8 @@ a:hover {
 h1 a {
 	font-size: 50px;
 	font-style: italic;
-	font-family: 'Corben', arial, serif;
+	font-family: 'Corben', arial, sans-serif;
 	color: #389f2d;
-	margin: 0; padding: 0;
-	position: absolute;
-	top: 10px; left: 30px;
-	height: 121px;
 	text-shadow: 0 0 10px #fff, 0 0 5px #fff;
 }
 h1 a:hover {
@@ -113,11 +109,16 @@ h1 a:hover {
 }
 
 #coscup-word {
-	background: transparent url('coscup.svg') center center no-repeat;
+	position: absolute;
+	top: 10px; left: 30px;
+	background: transparent url('coscup.png') center center no-repeat;
 	text-indent: -10000px;
-	display: inline-block; /* inline-block fails on IE? */
 	width: 305px; height: 121px;
-	vertical-align: 20px;
+}
+#coscup-year {
+	position: absolute;
+	top: 30px; left: 345px;
+
 }
 
 #info p {
