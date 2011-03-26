@@ -113,9 +113,9 @@
 				gw = Math.ceil(photo.width*factor/settings.gridSize);
 			var gh = Math.ceil(photo.height/photo.width*gw);
 			if (gw === 0 || gh === 0) return false;
-			var R = Math.floor(Math.sqrt(ngx*ngx+ngy*ngy)), T = ngx+ngy, r, t, points, x, y;
+			var R = Math.floor(Math.sqrt(ngx*ngx+ngy*ngy)/settings.gridSize)*settings.gridSize, T = ngx+ngy, r, t, points, x, y;
 			r = R;
-			while (r--) {
+			while (r-=settings.gridSize) {
 				t = T;
 				points = [];
 				while (t--) {
