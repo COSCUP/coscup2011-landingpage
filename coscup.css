@@ -74,9 +74,9 @@ a:hover {
 	right: 3%;
 	background: #f0f0f0; /* IE7 (must use bg: instead of bg-color: ) */
 	background: rgba(255,255,255,0.65);
-	-webkit-transition: all .3s ease-out;
-	-moz-transition: all .3s ease-out;
-	-o-transition: all .3s ease-out;
+	-webkit-transition: background,opacity .3s ease-out;
+	-moz-transition: background,opacity .3s ease-out;
+	-o-transition: background,opacity .3s ease-out;
 	opacity: 1;
 }
 
@@ -88,9 +88,9 @@ a:hover {
 }
 
 #info:hover {
-	-webkit-transition: all .3s ease-in;
-	-moz-transition: all .3s ease-in;
-	-o-transition: all .3s ease-in;
+	-webkit-transition: background .3s ease-in;
+	-moz-transition: background .3s ease-in;
+	-o-transition: background .3s ease-in;
 	background: #f8f8f8; /* IE */
 	background: rgba(255,255,255,0.9);
 }
@@ -198,3 +198,87 @@ h1 a:hover {
 		font-weight: bold;
 	}
 }
+
+@media screen and (max-device-width: 680px), screen and (max-width: 680px) {
+	#info {
+		right: 10px;
+		top: 10px;
+		min-width: 0;
+		min-height: 0;
+		width: 440px; height: auto;
+		padding: 10px;
+		background: #f8f8f8; /* IE */
+		background: rgba(255,255,255,0.9);
+	}
+	#info p {
+		position: static;
+	}
+	#coscup-word {
+		left: 10px;
+	}
+	#coscup-year {
+		left: 323px;
+	}
+	#title {
+		font-size: 12px;
+		margin: 5px 0;
+		margin-top: 105px;
+	}
+	#date {
+		font-size: 28px;
+		margin: 5px 0;
+	}
+	input, #subscribe, #archives {
+		font-size: 15px;
+	}
+	#info input {
+		opacity: 1;
+	}
+	body {
+		min-height: 280px; /* prevent #archives from covering #info */
+	}
+	input[type="email"] {
+		width: 200px;
+	}
+}
+
+@media screen and (max-device-width: 470px), screen and (max-width: 470px) {
+	#info {
+		width: 200px;
+		padding: 10px;
+	}
+	#coscup-word {
+		/* back to pure text */
+		background: none;
+		position: static;
+		text-indent: 0;
+		width: auto; height: auto;
+	}
+	#coscup-year {
+		position: static;
+		vertical-align: super;
+	}
+	h1 {
+		margin: 5px 0;
+	}
+	h1 a{
+		font-size: 20px;
+	}
+	#title {
+		font-size: 12px;
+		margin-top: 5px;
+	}
+	#date {
+		font-size: 16px;
+	}
+	input[type="email"] {
+		width: 170px;
+	}
+	input, #subscribe, #archives {
+		font-size: 12px;
+	}
+	body {
+		min-height: 260px;
+	}
+}
+
