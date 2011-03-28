@@ -8,6 +8,11 @@ body {
 	background-image: -webkit-gradient(radial, 32% center, 0, 32% center, 900, from(#fff), to(#aaa));
 	background-image: -moz-radial-gradient(32% center, ellipse closest-side, #fff 0%, #aaa 900px);
 }
+body.fallback {
+	background: url("fallback-bg.jpg") left top no-repeat #e0e0e0;
+	background-size: cover;
+	-moz-background-size: cover;
+}
 p {
 	margin: 0; padding: 0;
 	font-family: "Myriad Pro", "Lucida Grande", Helvetica, Arial,
