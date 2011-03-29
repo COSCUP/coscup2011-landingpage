@@ -62,9 +62,16 @@ a:hover {
 	-o-transform: scale(1.8) rotate(10deg);
 	z-index: 2;
 }
-#info.beforeLoad {
-	opacity: 0;
+
+@-webkit-keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
+
 #info {
 	position: absolute;
 	width: 60%; height: 40%;
@@ -74,10 +81,11 @@ a:hover {
 	right: 3%;
 	background: #f0f0f0; /* IE7 (must use bg: instead of bg-color: ) */
 	background: rgba(255,255,255,0.65);
-	-webkit-transition: background,opacity .3s ease-out;
-	-moz-transition: background,opacity .3s ease-out;
-	-o-transition: background,opacity .3s ease-out;
-	opacity: 1;
+	-webkit-transition: background .3s ease-out;
+	-moz-transition: background .3s ease-out;
+	-o-transition: background .3s ease-out;
+	-webkit-animation-name: fadeIn;
+	-webkit-animation-duration: .5s;
 }
 
 #info input {
